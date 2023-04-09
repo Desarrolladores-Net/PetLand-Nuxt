@@ -5,7 +5,7 @@
         </div>
         <div class="col-12 lg:col-7  d-flex just-content-center align-items-center column">
             <h1 class="text-center m-0 text-white animate__animated animate__fadeInRight" style="font-size: 70px;">PetLand</h1>
-            <p class="text-center m-0 text-white animate__animated animate__fadeInRight" style="font-size: 20px; width: 550px;">Adopta una mascota y cambia una vida, tu mejor amigo te está esperando</p>
+            <p class="text-center m-0 text-white animate__animated animate__fadeInRight" style="font-size: 20px;">Adopta una mascota y cambia una vida, tu mejor amigo te está esperando</p>
         </div>
     </div>
 </template>
