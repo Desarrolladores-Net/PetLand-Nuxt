@@ -1,5 +1,5 @@
 <template>
-
-    <h1>Este es el home</h1>
-
+    <NuxtLayout name="principal">
+        <h1>Main</h1>
+    </NuxtLayout>
 </template>

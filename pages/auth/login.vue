@@ -1,18 +1,19 @@
 <template>
     <NuxtLayout name="auth">
         <div class="d-flex column">
-            <Card style="width: 25em">
+            <Card style="width: 25em" class="animate__animated animate__fadeInLeft">
                 <template #title>
                     <h4 class="m-0 text-main-color">Inicio de sesión</h4>
                 </template>
                 <template #subtitle> Bienvenido a PetLand </template>
                 <template #content>
                     <span class="p-float-label">
-                        <InputText id="username" style="width: 100%;" />
+                        <InputText focusable id="username" style="width: 100%;" />
                         <label for="username">Correo</label>
                     </span>
                     <span class="p-float-label mt-10">
-                        <Password id="password" class="full-width" :inputStyle="{width: '100%'}" :feedback="false" toggleMask />
+                        <Password id="password" class="full-width" :inputStyle="{ width: '100%' }" :feedback="false"
+                            toggleMask />
                         <label for="password">Contraseña</label>
                     </span>
                 </template>
@@ -37,7 +38,7 @@
                 </template>
 
             </Card>
-            <NuxtLink class="mt-10 none-decoration" to="#">¿Olvidaste la contraseña?</NuxtLink>
+            <NuxtLink class="mt-10 none-decoration animate__animated animate__fadeInLeft" to="#">¿Olvidaste la contraseña?</NuxtLink>
         </div>
     </NuxtLayout>
 </template>
