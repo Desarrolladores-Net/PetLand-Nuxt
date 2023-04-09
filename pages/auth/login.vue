@@ -38,7 +38,7 @@
                 </template>
 
             </Card>
-            <NuxtLink class="mt-10 none-decoration" to="#">¿Olvidaste la contraseña?</NuxtLink>
+            <NuxtLink class="mt-10 none-decoration animate__animated animate__fadeInLeft" to="#">¿Olvidaste la contraseña?</NuxtLink>
         </div>
     </NuxtLayout>
 </template>
