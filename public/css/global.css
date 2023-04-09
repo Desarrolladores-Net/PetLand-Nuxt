@@ -1,0 +1,74 @@
+html,
+body {
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+}
+
+.full-height {
+    height: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.just-content-center {
+    justify-content: center;
+}
+
+.just-content-right {
+    justify-content: right;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.full-vh {
+    height: 100vh;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.bg-cat {
+    background-image: url('/public/img/auth.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.text-center {
+    text-align: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.mt-10{
+    margin-top: 10px;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-main-color{
+   color: rgba(0, 0, 0, 0.6);
+}
+
+* {
+    font-family: 'Roboto', Courier, monospace;
+}
+
+.none-decoration{
+    text-decoration-line: none;
+}
+
+

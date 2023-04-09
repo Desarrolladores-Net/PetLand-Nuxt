@@ -10,5 +10,10 @@
   },
   "devDependencies": {
     "nuxt": "^3.3.2"
+  },
+  "dependencies": {
+    "primeflex": "^3.3.0",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.26.1"
   }
 }
