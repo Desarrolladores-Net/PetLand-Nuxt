@@ -5,6 +5,8 @@ import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Divider from 'primevue/divider';
+import Toolbar from 'primevue/toolbar';
+import Sidebar from 'primevue/sidebar';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -13,5 +15,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component("InputText", InputText);
     nuxtApp.vueApp.component("Password", Password);
     nuxtApp.vueApp.component("Divider", Divider);
+    nuxtApp.vueApp.component("Toolbar", Toolbar);
+    nuxtApp.vueApp.component("Sidebar", Sidebar);
+    
     //other components that you need
 });

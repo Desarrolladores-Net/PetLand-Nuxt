@@ -3,7 +3,7 @@
 export default defineNuxtConfig({
     head: {
         link: [
-            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' }
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' },
         ]
     },
     css: [
@@ -11,7 +11,8 @@ export default defineNuxtConfig({
         "primevue/resources/primevue.css",
         "/node_modules/primeflex/primeflex.css",
         "primeicons/primeicons.css",
-        "/public/css/global.css"
+        "/public/css/global.css",
+        'animate.css/animate.min.css'
     ],
     build: {
         transpile: ["primevue"]
