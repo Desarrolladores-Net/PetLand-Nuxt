@@ -8,19 +8,21 @@
                 <template #subtitle> Bienvenido a PetLand </template>
                 <template #content>
                     <span class="p-float-label">
-                        <InputText focusable id="username" style="width: 100%;" />
+                        <InputText class="p-inputtext-sm" focusable id="username" style="width: 100%;" />
                         <label for="username">Correo</label>
                     </span>
                     <span class="p-float-label mt-10">
-                        <Password id="password" class="full-width" :inputStyle="{ width: '100%' }" :feedback="false"
-                            toggleMask />
+                        <Password id="password" class="full-width p-inputtext-sm" :inputStyle="{ width: '100%' }"
+                            :feedback="false" toggleMask />
                         <label for="password">Contraseña</label>
                     </span>
                 </template>
                 <template #footer>
                     <div class="d-flex just-content-right">
                         <Button label="Iniciar sesión" />
-                        <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
+                        <NuxtLink class="none-decoration" to="/">
+                            <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
+                        </NuxtLink>
                     </div>
                     <div class="d-flex">
                         <Divider></Divider>
@@ -38,7 +40,16 @@
                 </template>
 
             </Card>
-            <NuxtLink class="mt-10 none-decoration animate__animated animate__fadeInLeft" to="#">¿Olvidaste la contraseña?</NuxtLink>
+            <NuxtLink class="mt-10 none-decoration animate__animated animate__fadeInLeft" to="#">¿Olvidaste la contraseña?
+            </NuxtLink>
         </div>
     </NuxtLayout>
 </template>
+
+<script setup>
+
+useHead({
+    title: 'Login'
+})
+
+</script>

@@ -18,7 +18,7 @@
     <main>
         <slot></slot>
     </main>
-    <footer class="p-20" style="background-color: white;">
+    <footer class="p-20" style="background-color: white; height: 100%;">
         <div class="d-flex just-content-center">
             <NuxtLink class="none-decoration" to="https://github.com/Desarrolladores-Net">
                 <Button class="mr-10" icon="pi pi-github" rounded text></Button>
@@ -38,14 +38,20 @@
                 commodo consequat.</p>
         </Sidebar>
     </div>
-
-
 </template>
 
 
 <script setup>
 import { ref } from "vue";
 
+useHead({
+    titleTemplate: '%s | PetLand',
+    link: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: '"https://fonts.gstatic.com', crossOriginIsolated: true},
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap' },
+    ]
+})
 const visible = ref(false)
 const drawer = ref(false)
 
