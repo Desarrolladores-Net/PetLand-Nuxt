@@ -2,7 +2,10 @@ html,
 body {
     height: 100%;
     background-color: rgb(230, 230, 230);
+    margin: 0;
+    width: 100%;
 }
+
 
 .full-height {
     height: 100%;
@@ -25,15 +28,19 @@ body {
 }
 
 .full-vh {
-    height: 100vh;
+    height: 110vh;
 }
 
 .full-width{
     width: 100%;
 }
 
+.full-height{
+    height: 100%;
+}
+
 .bg-cat {
-    background-image: url('/public/img/auth.png');
+    background-image: url('/img/auth.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -55,6 +62,18 @@ body {
     margin-top: 10px;
 }
 
+.mr-10{
+    margin-right: 10px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
+.p-20{
+    padding: 20px;
+}
+
 .text-white {
     color: white;
 }
@@ -71,4 +90,16 @@ body {
     text-decoration-line: none;
 }
 
+.pi-github{
+    font-size: 30px;
+}
+
+.pi-telegram{
+    font-size: 30px;
+
+}
+
+.box-1 {
+    box-shadow: 0px 2px 14px 1px rgba(0,0,0,0.5);
+  }
 
