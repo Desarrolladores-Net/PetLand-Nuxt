@@ -57,12 +57,31 @@
 
 <script setup>
 import { ref } from "vue";
-
+import { registerRequest } from "@/services/auth/register";
+import { SET_OBJECT_INFO } from "@/services/browser/localStorage";
 const Model = ref({name: '', email: '', phone: '', password: '', confirmPassword: ''})
-
 
 useHead({
     title: 'Registro'
 })
+
+
+const submit = () => {
+    const dto = {
+        email: Model.value.email,
+        name: Model.value.name,
+        password: Model.value.password,
+        phone: Model.value.phone
+    }
+
+    registerRequest(dto).then(response => {
+        if(response.token)
+        {
+            SET_OBJECT_INFO('USER', response)
+        }
+    })
+
+}
+
 
 </script>
