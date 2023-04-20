@@ -15,8 +15,10 @@
                     </NuxtLink>
                 </div>
                 <div v-else>
-                    <Button icon="pi pi-bell" style="margin-right: 20px;" rounded text severity="secondary" aria-label="Notification" />
-                    <Button icon="pi pi-user" rounded text severity="primary" aria-label="User" />
+                    <Button icon="pi pi-bell" style="margin-right: 20px;" rounded text severity="secondary"
+                        aria-label="Notification" />
+                    <Button icon="pi pi-user" rounded text severity="primary" @click="toggle"  aria-haspopup="true" aria-label="User" aria-controls="overlay_menu" />
+                    <Menu style="z-index: 9001;" ref="menu" id="overlay_menu" :model="items" :popup="true" />
                 </div>
             </template>
         </Toolbar>
@@ -38,10 +40,17 @@
     </footer>
     <div class="card flex justify-content-center">
         <Sidebar style="z-index: 99999;" v-model:visible="drawer">
-            <h2>{{ store.state.user.fullname }}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</p>
+            <div style="margin-top: 40px;" class="d-flex">
+                <Avatar icon="pi pi-user" class="mr-2" size="xlarge" shape="circle" />
+                <div>
+                    <h2 class="text-main-color m-0"><strong>{{ store.state.user.fullname }}</strong></h2>
+                    <p class="m-0 text-main-color">{{ store.state.user.email }}</p>
+                    <p class="m-0 text-main-color">{{ store.state.user.phone }}</p>
+                </div>
+            </div>
+
+
+            <NavMenu></NavMenu>
         </Sidebar>
     </div>
 </template>
@@ -61,7 +70,41 @@ useHead({
 })
 const visible = ref(false)
 const drawer = ref(false)
+const menu = ref();
+// const items = useState('items', () => [{
+//     label: 'Perfil',
+//     icon: 'pi pi-user',
+    
+// },
+// {
+//     label: 'Cerrar sesión',
+//     icon: 'pi pi-sign-out',
+//     command: () => {
+//         store.commit('logout')
+//     } 
+// }
 
+// ])
+
+const items = ref([{
+    label: 'Perfil',
+    icon: 'pi pi-user',
+    
+},
+{
+    label: 'Cerrar sesión',
+    icon: 'pi pi-sign-out',
+    command: () => {
+        store.commit('logout')
+    } 
+}
+
+])
+
+
+const toggle = (event) => {
+    menu.value.toggle(event);
+};
 
 onMounted(() => {
     store.commit('initializeStore')
@@ -72,3 +115,5 @@ const handleDrawer = () => {
 }
 
 </script>
+
+

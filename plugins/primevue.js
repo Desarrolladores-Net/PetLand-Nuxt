@@ -10,7 +10,8 @@ import Sidebar from 'primevue/sidebar';
 import ProgressSpinner from 'primevue/progressspinner';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
-
+import Avatar from 'primevue/avatar';
+import Menu from 'primevue/menu';
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
     nuxtApp.vueApp.component("Button", Button);
@@ -22,6 +23,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component("Sidebar", Sidebar);
     nuxtApp.vueApp.component('ProgressSpinner', ProgressSpinner)
     nuxtApp.vueApp.component('Toast', Toast)
+    nuxtApp.vueApp.component('Avatar', Avatar)
+    nuxtApp.vueApp.component('Menu', Menu)
+
+
     nuxtApp.vueApp.use(ToastService)
     //other components that you need
 });
