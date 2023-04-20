@@ -7,6 +7,9 @@ import Password from 'primevue/password';
 import Divider from 'primevue/divider';
 import Toolbar from 'primevue/toolbar';
 import Sidebar from 'primevue/sidebar';
+import ProgressSpinner from 'primevue/progressspinner';
+import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -17,6 +20,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component("Divider", Divider);
     nuxtApp.vueApp.component("Toolbar", Toolbar);
     nuxtApp.vueApp.component("Sidebar", Sidebar);
-    
+    nuxtApp.vueApp.component('ProgressSpinner', ProgressSpinner)
+    nuxtApp.vueApp.component('Toast', Toast)
+    nuxtApp.vueApp.use(ToastService)
     //other components that you need
 });

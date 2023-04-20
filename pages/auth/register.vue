@@ -19,19 +19,32 @@
                     <label for="phone">Teléfono</label>
                 </span>
                 <span class="p-float-label mt-10">
-                    <Password id="password" class="full-width  p-inputtext-sm" v-model="Model.password" :inputStyle="{ width: '100%' }"
-                        :feedback="false" toggleMask />
+                    <Password id="password" class="full-width  p-inputtext-sm" v-model="Model.password"
+                        :inputStyle="{ width: '100%' }" :feedback="false" toggleMask />
                     <label for="password">Contraseña</label>
                 </span>
                 <span class="p-float-label mt-10">
-                    <Password id="password" class="full-width p-inputtext-sm" v-model="Model.confirmPassword" :inputStyle="{ width: '100%' }"
-                        :feedback="false" toggleMask />
+                    <Password id="password" class="full-width p-inputtext-sm" v-model="Model.confirmPassword"
+                        :inputStyle="{ width: '100%' }" :feedback="false" toggleMask />
                     <label for="password">Confirmar contraseña</label>
                 </span>
+                <ul v-if="errors.length > 0" class="height-100 scroll">
+                    <li v-for="item in errors" style="color: red">
+                        <p v-for="value in item[1]">
+                            {{ value }}
+                        </p>
+                    </li>
+                </ul>
             </template>
+
             <template #footer>
                 <div class="d-flex just-content-right">
-                    <Button label="Registrar" />
+                    <Button v-if="!loading" label="Registrar" @click="submit()">
+                        Registrar
+                    </Button>
+                    <ProgressSpinner v-else style="height: 40px" strokeWidth="8" fill="var(--surface-ground)"
+                        animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+
                     <NuxtLink class="none-decoration" to="/">
                         <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
                     </NuxtLink>
@@ -51,18 +64,81 @@
                 </div>
             </template>
         </Card>
+        <Toast position="bottom-right"></Toast>
     </NuxtLayout>
 </template>
 
 
 <script setup>
-import { ref } from "vue";
+import { ref, onBeforeMount } from "vue";
+import { registerRequest } from "@/services/auth/register";
+import store from "@/store/index";
+import { useToast } from "primevue/usetoast";
+import { useRouter } from "vue-router";
 
-const Model = ref({name: '', email: '', phone: '', password: '', confirmPassword: ''})
 
-
+const router = useRouter()
+const Model = ref({ name: '', email: '', phone: '', password: '', confirmPassword: '' })
+const errors = ref([])
+const loading = ref(false)
+const toast = useToast()
 useHead({
     title: 'Registro'
 })
 
+const show = () => {
+    
+    toast.add({ severity: 'info', summary: 'Información', detail: 'Ya hay un usuario con ese email.', life: 4000 });
+};
+
+
+const error500 = () => {
+    
+    toast.add({ severity: 'error', summary: 'Error', detail: 'Ha pasado algo, intentelo más tarde', life: 4000 });
+};
+
+const submit = () => {
+    loading.value = true
+    const dto = {
+        email: Model.value.email,
+        fullname: Model.value.name,
+        password: Model.value.password,
+        confirmPassword: Model.value.confirmPassword,
+        phone: Model.value.phone
+    }
+
+    registerRequest(dto).then(response => {
+
+        store.commit('login', response.data)
+        router.push('/')
+        loading.value = false
+    }).catch(error => {
+
+        if (error.response.status == 409) {
+            errors.value = []
+            show()
+            
+        }
+        else if(error.response.status == 400) {
+            errors.value = Object.entries(error.response.data.errors)
+        }
+        else
+        {
+            error500()
+        }
+
+        loading.value = false
+
+    })
+
+}
+
+onBeforeMount(() => {
+    if(store.state.user)
+    {
+        router.push('/')
+    }
+})
+
 </script>
+

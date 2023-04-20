@@ -6,12 +6,18 @@
             </template>
 
             <template #end>
-                <NuxtLink class="none-decoration" to="/auth/login">
-                    <Button class="mr-2" text>Iniciar sesión</Button>
-                </NuxtLink>
-                <NuxtLink class="none-decoration" to="/auth/register">
-                    <Button severity="secondary" class="mr-2" text>Registrarse</Button>
-                </NuxtLink>
+                <div v-if="!store.state.user">
+                    <NuxtLink class="none-decoration" to="/auth/login">
+                        <Button class="mr-2" text>Iniciar sesión</Button>
+                    </NuxtLink>
+                    <NuxtLink class="none-decoration" to="/auth/register">
+                        <Button severity="secondary" class="mr-2" text>Registrarse</Button>
+                    </NuxtLink>
+                </div>
+                <div v-else>
+                    <Button icon="pi pi-bell" style="margin-right: 20px;" rounded text severity="secondary" aria-label="Notification" />
+                    <Button icon="pi pi-user" rounded text severity="primary" aria-label="User" />
+                </div>
             </template>
         </Toolbar>
     </header>
@@ -32,7 +38,7 @@
     </footer>
     <div class="card flex justify-content-center">
         <Sidebar style="z-index: 99999;" v-model:visible="drawer">
-            <h2>Brian Perez</h2>
+            <h2>{{ store.state.user.fullname }}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo consequat.</p>
@@ -42,18 +48,24 @@
 
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import store from "@/store/index";
 
 useHead({
     titleTemplate: '%s | PetLand',
     link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: '"https://fonts.gstatic.com', crossOriginIsolated: true},
+        { rel: 'preconnect', href: '"https://fonts.gstatic.com', crossOriginIsolated: true },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap' },
     ]
 })
 const visible = ref(false)
 const drawer = ref(false)
+
+
+onMounted(() => {
+    store.commit('initializeStore')
+})
 
 const handleDrawer = () => {
     drawer.value = !drawer.value
