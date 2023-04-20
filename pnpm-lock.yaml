@@ -16,6 +16,9 @@ dependencies:
   primevue:
     specifier: ^3.26.1
     version: 3.26.1(primeicons@6.0.1)(vue@3.2.47)
+  vue-router:
+    specifier: ^4.1.6
+    version: 4.1.6(vue@3.2.47)
   vuex:
     specifier: ^4.1.0
     version: 4.1.0(vue@3.2.47)
@@ -4467,7 +4470,6 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.5.0
       vue: 3.2.47
-    dev: true
 
   /vue@3.2.47:
     resolution: {integrity: sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==}

@@ -17,6 +17,7 @@
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primevue": "^3.26.1",
+    "vue-router": "^4.1.6",
     "vuex": "^4.1.0"
   }
 }

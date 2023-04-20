@@ -70,11 +70,14 @@
 
 
 <script setup>
-import { ref } from "vue";
+import { ref, onBeforeMount } from "vue";
 import { registerRequest } from "@/services/auth/register";
 import store from "@/store/index";
 import { useToast } from "primevue/usetoast";
+import { useRouter } from "vue-router";
 
+
+const router = useRouter()
 const Model = ref({ name: '', email: '', phone: '', password: '', confirmPassword: '' })
 const errors = ref([])
 const loading = ref(false)
@@ -85,7 +88,13 @@ useHead({
 
 const show = () => {
     
-    toast.add({ severity: 'info', summary: 'Información', detail: 'Ya hay un usuario con ese email.', life: 3000 });
+    toast.add({ severity: 'info', summary: 'Información', detail: 'Ya hay un usuario con ese email.', life: 4000 });
+};
+
+
+const error500 = () => {
+    
+    toast.add({ severity: 'error', summary: 'Error', detail: 'Ha pasado algo, intentelo más tarde', life: 4000 });
 };
 
 const submit = () => {
@@ -101,6 +110,7 @@ const submit = () => {
     registerRequest(dto).then(response => {
 
         store.commit('login', response.data)
+        router.push('/')
         loading.value = false
     }).catch(error => {
 
@@ -109,8 +119,12 @@ const submit = () => {
             show()
             
         }
-        else {
+        else if(error.response.status == 400) {
             errors.value = Object.entries(error.response.data.errors)
+        }
+        else
+        {
+            error500()
         }
 
         loading.value = false
@@ -119,5 +133,12 @@ const submit = () => {
 
 }
 
+onBeforeMount(() => {
+    if(store.state.user)
+    {
+        router.push('/')
+    }
+})
 
 </script>
+
