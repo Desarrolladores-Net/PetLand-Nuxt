@@ -6,8 +6,10 @@ export interface RegisterDTO{
 }
 
 export interface RegisterResponse{
-    token: 'string'
-    id: 'string'
+    fullname: string;
+    email: string;
+    phone: string;
+    token: string;
 }
 
 

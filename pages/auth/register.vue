@@ -19,19 +19,32 @@
                     <label for="phone">Teléfono</label>
                 </span>
                 <span class="p-float-label mt-10">
-                    <Password id="password" class="full-width  p-inputtext-sm" v-model="Model.password" :inputStyle="{ width: '100%' }"
-                        :feedback="false" toggleMask />
+                    <Password id="password" class="full-width  p-inputtext-sm" v-model="Model.password"
+                        :inputStyle="{ width: '100%' }" :feedback="false" toggleMask />
                     <label for="password">Contraseña</label>
                 </span>
                 <span class="p-float-label mt-10">
-                    <Password id="password" class="full-width p-inputtext-sm" v-model="Model.confirmPassword" :inputStyle="{ width: '100%' }"
-                        :feedback="false" toggleMask />
+                    <Password id="password" class="full-width p-inputtext-sm" v-model="Model.confirmPassword"
+                        :inputStyle="{ width: '100%' }" :feedback="false" toggleMask />
                     <label for="password">Confirmar contraseña</label>
                 </span>
+                <ul v-if="errors.length > 0" class="height-100 scroll">
+                    <li v-for="item in errors" style="color: red">
+                        <p v-for="value in item[1]">
+                            {{ value }}
+                        </p>
+                    </li>
+                </ul>
             </template>
+
             <template #footer>
                 <div class="d-flex just-content-right">
-                    <Button label="Registrar" />
+                    <Button v-if="!loading" label="Registrar" @click="submit()">
+                        Registrar
+                    </Button>
+                    <ProgressSpinner v-else style="height: 40px" strokeWidth="8" fill="var(--surface-ground)"
+                                animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+
                     <NuxtLink class="none-decoration" to="/">
                         <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
                     </NuxtLink>
@@ -58,27 +71,32 @@
 <script setup>
 import { ref } from "vue";
 import { registerRequest } from "@/services/auth/register";
-import { SET_OBJECT_INFO } from "@/services/browser/localStorage";
-const Model = ref({name: '', email: '', phone: '', password: '', confirmPassword: ''})
+import store from "@/store/index";
 
+const Model = ref({ name: '', email: '', phone: '', password: '', confirmPassword: '' })
+const errors = ref([])
+const loading = ref(false)
 useHead({
     title: 'Registro'
 })
 
 
 const submit = () => {
+    loading.value = true
     const dto = {
         email: Model.value.email,
-        name: Model.value.name,
+        fullname: Model.value.name,
         password: Model.value.password,
+        confirmPassword: Model.value.confirmPassword,
         phone: Model.value.phone
     }
 
     registerRequest(dto).then(response => {
-        if(response.token)
-        {
-            SET_OBJECT_INFO('USER', response)
-        }
+
+        store.commit('login', response.data)
+        loading.value = false
+    }).catch(error => {
+        errors.value = Object.entries(error.response.data.errors)
     })
 
 }

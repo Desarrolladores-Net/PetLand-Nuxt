@@ -1,5 +1,5 @@
-const APIDomain = 'http://localhost:5232/api/';
+const APIDomain = 'http://localhost:5225/api/';
 
-//Auth
 
-export const  RegisterUrl = `${APIDomain}auth/register`
+//User
+export const  RegisterUrl = `${APIDomain}user`

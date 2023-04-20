@@ -7,7 +7,7 @@ import Password from 'primevue/password';
 import Divider from 'primevue/divider';
 import Toolbar from 'primevue/toolbar';
 import Sidebar from 'primevue/sidebar';
-
+import ProgressSpinner from 'primevue/progressspinner';
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
     nuxtApp.vueApp.component("Button", Button);
@@ -17,6 +17,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component("Divider", Divider);
     nuxtApp.vueApp.component("Toolbar", Toolbar);
     nuxtApp.vueApp.component("Sidebar", Sidebar);
-    
+    nuxtApp.vueApp.component('ProgressSpinner', ProgressSpinner)
     //other components that you need
 });
