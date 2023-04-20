@@ -43,7 +43,7 @@
                         Registrar
                     </Button>
                     <ProgressSpinner v-else style="height: 40px" strokeWidth="8" fill="var(--surface-ground)"
-                                animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+                        animationDuration=".5s" aria-label="Custom ProgressSpinner" />
 
                     <NuxtLink class="none-decoration" to="/">
                         <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
@@ -64,6 +64,7 @@
                 </div>
             </template>
         </Card>
+        <Toast position="bottom-right"></Toast>
     </NuxtLayout>
 </template>
 
@@ -72,14 +73,20 @@
 import { ref } from "vue";
 import { registerRequest } from "@/services/auth/register";
 import store from "@/store/index";
+import { useToast } from "primevue/usetoast";
 
 const Model = ref({ name: '', email: '', phone: '', password: '', confirmPassword: '' })
 const errors = ref([])
 const loading = ref(false)
+const toast = useToast()
 useHead({
     title: 'Registro'
 })
 
+const show = () => {
+    
+    toast.add({ severity: 'info', summary: 'Información', detail: 'Ya hay un usuario con ese email.', life: 3000 });
+};
 
 const submit = () => {
     loading.value = true
@@ -96,7 +103,18 @@ const submit = () => {
         store.commit('login', response.data)
         loading.value = false
     }).catch(error => {
-        errors.value = Object.entries(error.response.data.errors)
+
+        if (error.response.status == 409) {
+            errors.value = []
+            show()
+            
+        }
+        else {
+            errors.value = Object.entries(error.response.data.errors)
+        }
+
+        loading.value = false
+
     })
 
 }
