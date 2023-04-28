@@ -40,16 +40,14 @@
     </footer>
     <div class="card flex justify-content-center">
         <Sidebar style="z-index: 99999;" v-model:visible="drawer">
-            <div style="margin-top: 40px;" class="d-flex">
+            <div v-if="store.state.user" style="margin-top: 40px;" class="d-flex">
                 <Avatar icon="pi pi-user" class="mr-2" size="xlarge" shape="circle" />
                 <div>
-                    <h2 class="text-main-color m-0"><strong>{{ store.state.user.fullname }}</strong></h2>
+                    <h3 class="text-main-color m-0 mt-10"><strong>{{ store.state.user.fullname }}</strong></h3>
                     <p class="m-0 text-main-color">{{ store.state.user.email }}</p>
                     <p class="m-0 text-main-color">{{ store.state.user.phone }}</p>
                 </div>
             </div>
-
-
             <NavMenu></NavMenu>
         </Sidebar>
     </div>
@@ -71,20 +69,6 @@ useHead({
 const visible = ref(false)
 const drawer = ref(false)
 const menu = ref();
-// const items = useState('items', () => [{
-//     label: 'Perfil',
-//     icon: 'pi pi-user',
-    
-// },
-// {
-//     label: 'Cerrar sesión',
-//     icon: 'pi pi-sign-out',
-//     command: () => {
-//         store.commit('logout')
-//     } 
-// }
-
-// ])
 
 const items = ref([{
     label: 'Perfil',

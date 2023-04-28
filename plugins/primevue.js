@@ -12,6 +12,10 @@ import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
 import Avatar from 'primevue/avatar';
 import Menu from 'primevue/menu';
+import FileUpload from 'primevue/fileupload';
+import Textarea from 'primevue/textarea';
+import Dropdown from 'primevue/dropdown';
+
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
     nuxtApp.vueApp.component("Button", Button);
@@ -25,7 +29,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component('Toast', Toast)
     nuxtApp.vueApp.component('Avatar', Avatar)
     nuxtApp.vueApp.component('Menu', Menu)
-
+    nuxtApp.vueApp.component('FileUpload', FileUpload)
+    nuxtApp.vueApp.component('Textarea', Textarea)
+    nuxtApp.vueApp.component('Dropdown', Dropdown)
 
     nuxtApp.vueApp.use(ToastService)
     //other components that you need
