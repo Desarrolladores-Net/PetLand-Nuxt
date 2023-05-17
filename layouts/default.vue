@@ -55,7 +55,7 @@
 
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onBeforeMount } from "vue";
 import store from "@/store/index";
 
 useHead({

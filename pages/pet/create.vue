@@ -34,8 +34,12 @@
                     <InputText v-model="Model.streetName" class="p-inputtext-sm" focusable style="width: 100%;" />
                     <label>Nombre de la calle y entrecalles</label>
                 </span>
+                <span class="p-float-label mt-10">
+                    <Textarea v-model="Model.moreDetails" rows="5" style="width: 100%;" />
+                    <label>Más detalles</label>
+                </span>
                 <FileUpload @select="loadFile" class="mt-10" @clear="clearImage()" mode="basic" choose-label="Subir foto"
-                    name="report" la :multiple="false" accept="image/*" :maxFileSize="1000000"></FileUpload>
+                    name="report" la :multiple="false" accept="image/*" :maxFileSize="10000000"></FileUpload>
 
                 <img v-if="Model.file" class="mt-10" style="border-radius: 5px;" :alt="Model.file.name" height="200"
                     :src="Model.file.objectURL" />
@@ -45,7 +49,7 @@
 
             <template #footer>
                 <div class="d-flex just-content-right">
-                    <Button class="mr-10">
+                    <Button @click="savePet()" class="mr-10">
                         Guardar
                     </Button>
                     <NuxtLink class="none-decoration" to="/pet">
@@ -63,15 +67,19 @@
 
 <script setup>
 import { getMunicipality, getProvinces } from "@/services/pet/address";
-
-
+import { SavePet } from '@/helpers/url';
+import { SavePetRequest } from '../../services/pet/petRequest';
+import store from '@/store/index';
+import Axios from "axios";
+import { useRouter } from "vue-router";
 
 
 useHead({
     title: 'Crear reporte'
 })
 
-const Model = ref({ province: '', municipality: '', file: '', name: '', age: '', description: '', province: '', municipality: '', streetName: '' })
+const router = useRouter()
+const Model = useState('pet', () => ({ province: '', municipality: '', file: '', name: '', age: '', description: '', province: '', municipality: '', streetName: '', moreDetails: '' }))
 
 const loadFile = (e) => {
 
@@ -82,6 +90,23 @@ const clearImage = () => {
     Model.value.file = ''
 }
 
+const savePet = () => {
+
+   const form = new FormData()
+   form.append('UserId', store.state.user.id)
+   form.append('Fullname', Model.value.name)
+   form.append('Age', Model.value.age)
+   form.append('Description', Model.value.description)
+   form.append('Province', Model.value.province.name)
+   form.append('Municipe', Model.value.municipality.name)
+   form.append('StreetName', Model.value.streetName)
+   form.append('MoreDetails', Model.value.moreDetails)
+   form.append('Photo', Model.value.file)
+    
+    SavePetRequest(form).then(response => {
+        router.push('/pet')
+    }).catch(error => console.log(error))
+}
 
 
 </script>
