@@ -1,7 +1,7 @@
 <template>
-    <Card>
+    <Card class="animate__animated animate__fadeIn">
         <template #header>
-            <img class="br-5" alt="user header" src="/img/auth.jpg" />
+            <img class="br-5" alt="Foto del animalito" src="/img/auth.jpg" />
         </template>
         <template #title> Advanced Card </template>
         <template #subtitle> Card subtitle </template>
@@ -22,6 +22,19 @@
 
 <script setup>
 import { defineProps } from "vue";
+
+
+const props = defineProps({
+    fullName: String,
+    age: Number,
+    address: String,
+    description: String,
+    wasAdopted: Boolean,
+    date: Date
+})
+
+
+
 
 useHead({
     title: 'Mascotas'

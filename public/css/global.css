@@ -4,8 +4,16 @@ body {
     background-color: rgb(230, 230, 230);
     margin: 0;
     width: 100%;
+    overflow-x: hidden;
 }
 
+main{
+    min-height: 600px;
+}
+
+#__nuxt{
+    min-height: 100vh;
+}
 
 .br-5{
     border-radius: 5px;
