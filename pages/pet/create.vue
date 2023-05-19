@@ -79,7 +79,7 @@ useHead({
 })
 
 const router = useRouter()
-const Model = useState('pet', () => ({ province: '', municipality: '', file: '', name: '', age: '', description: '', province: '', municipality: '', streetName: '', moreDetails: '' }))
+const Model = ref({ province: '', municipality: '', file: '', name: '', age: '', description: '', province: '', municipality: '', streetName: '', moreDetails: '' })
 
 const loadFile = (e) => {
 

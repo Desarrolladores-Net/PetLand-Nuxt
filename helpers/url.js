@@ -1,4 +1,5 @@
 const APIDomain = 'https://localhost:7170/api/';
+export const APIFiles = 'https://localhost:7170'
 
 
 //User

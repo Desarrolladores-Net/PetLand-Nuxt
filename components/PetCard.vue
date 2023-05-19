@@ -1,36 +1,29 @@
 <template>
     <Card class="animate__animated animate__fadeIn">
         <template #header>
-            <img class="br-5" alt="Foto del animalito" src="/img/auth.jpg" />
+            <img style="max-height: 400px; object-fit: cover;" class="br-5" alt="Foto del animalito" :src=" APIFiles + props.pet.photoPath" />
         </template>
-        <template #title> Advanced Card </template>
-        <template #subtitle> Card subtitle </template>
+        <template #title> {{ props.pet.fullname ? props.pet.fullname : 'Nombre desconocido' }} </template>
+        <template #subtitle> Edad: {{ props.pet.age ? props.pet.age + ' años' : 'Desconocida' }} </template>
         <template #content>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
-                numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse,
-                cupiditate neque
-                quas!
-            </p>
+          <p>{{ props.pet.address }}</p>
         </template>
         <template #footer>
-            <Button icon="pi pi-check" label="Save" />
-            <Button icon="pi pi-times" label="Cancel" severity="secondary" style="margin-left: 0.5em" />
+            <div class="d-flex just-content-right">
+                <Button label="Detalles" />
+            </div>
+
         </template>
     </Card>
 </template>
 
 <script setup>
 import { defineProps } from "vue";
+import { APIFiles } from "@/helpers/url";
 
 
 const props = defineProps({
-    fullName: String,
-    age: Number,
-    address: String,
-    description: String,
-    wasAdopted: Boolean,
-    date: Date
+    pet: Object
 })
 
 
