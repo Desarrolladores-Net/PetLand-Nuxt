@@ -12,10 +12,10 @@ export const getMunicipality = (province) => {
             })
         }
     })
-
-    return result;
+    
+    return [{name: 'Todos'}].concat(result);
 }
 
 export const getProvinces = () => {
-    return  [{name: 'Pinar del Río'}, {name:'Artemisa'}, {name:'La Habana'}, {name:'Mayabeque'}, {name:'Matanzas'}, {name:'Villa Clara'}, {name:'Cienfuegos'}, {name:'Sancti Spíritus'}, {name:'Ciego de Ávila'}, {name:'Camagüey'}, {name:'Las Tunas'}, {name:'Holguín'}, {name:'Granma'}, {name: 'Santiago de Cuba'}, {name:'Guantánamo'},{name: 'Isla de la juventud'}]
+    return  [{name: 'Todas'},{name: 'Pinar del Río'}, {name:'Artemisa'}, {name:'La Habana'}, {name:'Mayabeque'}, {name:'Matanzas'}, {name:'Villa Clara'}, {name:'Cienfuegos'}, {name:'Sancti Spíritus'}, {name:'Ciego de Ávila'}, {name:'Camagüey'}, {name:'Las Tunas'}, {name:'Holguín'}, {name:'Granma'}, {name: 'Santiago de Cuba'}, {name:'Guantánamo'},{name: 'Isla de la juventud'}]
 } 

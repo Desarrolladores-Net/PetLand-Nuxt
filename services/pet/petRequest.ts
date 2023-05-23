@@ -4,9 +4,9 @@ import { CreatePet, CreatePetResponse, Pet  } from '../../interfaces/pet/interfa
 
 
 
-export function GetPetsRequest(skip: number): Promise<Pet[]>
+export function GetPetsRequest(skip: number, province: string, municipality: string): Promise<Pet[]>
 {
-    return Axios.get(`${GetAllPets}?skip=${skip}`)
+    return Axios.get(`${GetAllPets}?skip=${skip}&province=${province}&municipality=${municipality}`)
 }
 
 export function SavePetRequest(element: FormData): Promise<CreatePetResponse>

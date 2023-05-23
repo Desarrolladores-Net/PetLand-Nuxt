@@ -1,6 +1,6 @@
 <template>
     <div class="p-20">
-        <Card class="animate__animated animate__fadeInLeft">
+        <Card class="animate__animated animate__fadeIn">
             <template #title>
                 <h4 class="m-0 text-main-color">Reporte</h4>
             </template>
