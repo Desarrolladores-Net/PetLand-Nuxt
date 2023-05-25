@@ -16,6 +16,7 @@ import FileUpload from 'primevue/fileupload';
 import Textarea from 'primevue/textarea';
 import Dropdown from 'primevue/dropdown';
 import Skeleton from 'primevue/skeleton';
+import Paginator from "primevue/paginator";
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -34,6 +35,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component('Textarea', Textarea)
     nuxtApp.vueApp.component('Dropdown', Dropdown)
     nuxtApp.vueApp.component('Skeleton', Skeleton)
+    nuxtApp.vueApp.component('Paginator', Paginator)
     nuxtApp.vueApp.use(ToastService)
     //other components that you need
 });
