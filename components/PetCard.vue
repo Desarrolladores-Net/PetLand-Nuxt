@@ -6,7 +6,7 @@
         <template #title> {{ props.pet.fullname ? props.pet.fullname : 'Nombre desconocido' }} </template>
         <template #subtitle> Edad: {{ props.pet.age ? props.pet.age + ' años' : 'Desconocida' }} </template>
         <template #content>
-          <p>{{ props.pet.address }}</p>
+          <p>{{ props.pet.description }}</p>
         </template>
         <template #footer>
             <div class="d-flex just-content-right">
