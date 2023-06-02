@@ -29,7 +29,7 @@
             </template>
         </Card>
 
-        <div v-if="!pending" class="grid p-20">
+        <div v-if="data" class="grid p-20">
             <div class="col-12 lg:col-3 md:col-6 " v-for="item in data.info">
                 <PetCard :pet="item"></PetCard>
             </div>
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <Paginator v-model:first="page" @update:first="requestAll()" v-if="!pending" :rows="10" :totalRecords="data.quanty"></Paginator>
+    <Paginator v-model:first="page" @update:first="requestAll()" v-if="data" :rows="10" :totalRecords="data.quanty"></Paginator>
 
     <NuxtLink v-if="store.state.user" class="none-decoration" to="/pet/create">
         <Button color="primary" class="p-fixed" style="bottom: 0; right: 0; margin: 50px;" icon="pi pi-plus" raised rounded
@@ -60,12 +60,9 @@ const filter = useState('filter', () => ({ province: {name:'Todas'}, municipalit
 const page = useState('pagePet', () => 0)
 const loading = useState('loadingPetIndex', () => ({search: false}) )
 
-const { data, pending } = await useLazyAsyncData('pets', async () => {
+const { data, pending } = await useAsyncData('pets',
+() => $fetch(`${GetAllPets}?skip=${page.value}&province=${filter.value.province.name}&municipality=${filter.value.municipality.name}`))
 
-    const { data: value } = await GetPetsRequest(page.value == 0 ? 0 : page.value * 10, filter.value.province.name, filter.value.municipality.name)
-    console.log(value)
-    return value
-})
 
 const requestAll = async () => {
     loading.value.search = true

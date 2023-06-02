@@ -113,7 +113,7 @@ const submit = () => {
         router.push('/')
         loading.value = false
     }).catch(error => {
-
+        loading.value = false
         if (error.response.status == 409) {
             errors.value = []
             show()
@@ -127,7 +127,7 @@ const submit = () => {
             error500()
         }
 
-        loading.value = false
+        
 
     })
 
