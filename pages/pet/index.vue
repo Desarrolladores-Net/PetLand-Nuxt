@@ -50,7 +50,6 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
 import { GetPetsRequest } from "@/services/pet/petRequest";
 import { GetAllPets } from "@/helpers/url";
 import store from "@/store/index";

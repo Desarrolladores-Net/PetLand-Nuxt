@@ -17,6 +17,10 @@ import Textarea from 'primevue/textarea';
 import Dropdown from 'primevue/dropdown';
 import Skeleton from 'primevue/skeleton';
 import Paginator from "primevue/paginator";
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -36,6 +40,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component('Dropdown', Dropdown)
     nuxtApp.vueApp.component('Skeleton', Skeleton)
     nuxtApp.vueApp.component('Paginator', Paginator)
+    nuxtApp.vueApp.component('TabView', TabView)
+    nuxtApp.vueApp.component('TabPanel', TabPanel)
+    nuxtApp.vueApp.component('DataTable', DataTable)
+    nuxtApp.vueApp.component('Column', Column)
     nuxtApp.vueApp.use(ToastService)
     //other components that you need
 });
