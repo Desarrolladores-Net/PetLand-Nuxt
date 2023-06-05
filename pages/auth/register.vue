@@ -39,15 +39,14 @@
 
             <template #footer>
                 <div class="d-flex just-content-right">
+                    <NuxtLink class="none-decoration" to="/">
+                        <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
+                    </NuxtLink>
                     <Button v-if="!loading" label="Registrar" @click="submit()">
                         Registrar
                     </Button>
                     <ProgressSpinner v-else style="height: 40px" strokeWidth="8" fill="var(--surface-ground)"
                         animationDuration=".5s" aria-label="Custom ProgressSpinner" />
-
-                    <NuxtLink class="none-decoration" to="/">
-                        <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
-                    </NuxtLink>
                 </div>
                 <div class="d-flex">
                     <Divider></Divider>

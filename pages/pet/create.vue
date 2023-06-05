@@ -48,15 +48,15 @@
             </template>
 
             <template #footer>
-                <div class="d-flex just-content-right">
-                    <Button @click="savePet()" class="mr-10">
-                        Guardar
-                    </Button>
+                <div class="d-flex just-content-right">       
                     <NuxtLink class="none-decoration" to="/pet">
-                        <Button text>
+                        <Button class="mr-10" text>
                             Cancelar
                         </Button>
                     </NuxtLink>
+                    <Button @click="savePet()" >
+                        Guardar
+                    </Button>
                 </div>
 
             </template>

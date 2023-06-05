@@ -26,3 +26,6 @@ export interface UpdateFormResponse{
     name: String
 }
 
+export interface CreateFormRequestModel{
+    name: String
+}
