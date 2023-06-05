@@ -21,9 +21,11 @@ import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import Dialog from 'primevue/dialog';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
+    nuxtApp.vueApp.use(ToastService)
     nuxtApp.vueApp.component("Button", Button);
     nuxtApp.vueApp.component("Card", Card);
     nuxtApp.vueApp.component("InputText", InputText);
@@ -44,6 +46,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component('TabPanel', TabPanel)
     nuxtApp.vueApp.component('DataTable', DataTable)
     nuxtApp.vueApp.component('Column', Column)
-    nuxtApp.vueApp.use(ToastService)
+    nuxtApp.vueApp.component('Dialog', Dialog)
+   
     //other components that you need
 });

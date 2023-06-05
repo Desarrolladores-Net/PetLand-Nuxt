@@ -9,3 +9,8 @@ export interface GetFormResponse{
     count: Number
 }
 
+export interface ActiveFormRequestModel{
+    id: String,
+    oldId: String,
+    active: Boolean
+}
