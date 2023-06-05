@@ -14,3 +14,15 @@ export interface ActiveFormRequestModel{
     oldId: String,
     active: Boolean
 }
+
+export interface UpdateFormRequest{
+    id: String,
+    name: String
+}
+
+
+export interface UpdateFormResponse{
+    id: String,
+    name: String
+}
+
