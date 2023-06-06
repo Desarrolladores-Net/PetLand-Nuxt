@@ -2,7 +2,7 @@
     <div class="d-flex just-content-right mt-10">
         <Button label="Crear formulario" @click="createDialog = true"></Button>
     </div>
-    <DataTable v-if="forms" :value="forms.data"  class="p-datatable-sm">
+    <DataTable v-if="forms" :value="forms.data"  class="p-datatable-sm max-height-300 scroll">
         <Column field="name" header="Nombre"></Column>
         <Column field="active" header="Activo">
             <template #body="{ data, index }">

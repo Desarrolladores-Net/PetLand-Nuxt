@@ -13,7 +13,7 @@
                 </div>
             </template>
             <template #content>
-                <DataTable v-if="questions" :value="questions" class="p-datatable-sm">
+                <DataTable v-if="questions" :value="questions" class="p-datatable-sm max-height-300 scroll">
                     <Column field="message" header="Pregunta"></Column>
                     <Column field="typeQuestion" header="Tipo de pregunta">
                         <template #body="{ data, index }">
@@ -24,9 +24,9 @@
                     </Column>
                     <Column header="Acciones">
                         <template #body="{ data }">
-                            <Button text v-tooltip.bottom="'Editar formulario'" icon="pi pi-pencil"
+                            <Button text v-tooltip.bottom="'Editar pregunta'" icon="pi pi-pencil"
                                severity="success"></Button>
-                            <Button text v-tooltip.bottom="'Eliminar formulario'" icon="pi pi-trash"
+                            <Button text v-tooltip.bottom="'Eliminar pregunta'" icon="pi pi-trash"
                                 severity="danger"></Button>
                         </template>
                     </Column>

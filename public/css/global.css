@@ -123,6 +123,10 @@ main{
     height: 70px;
 }
 
+.max-height-300{
+    max-height: 300px;
+}
+
 .scroll{
     overflow-y: auto;
 }
