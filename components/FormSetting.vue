@@ -11,8 +11,9 @@
         </Column>
         <Column header="Acciones">
             <template #body="{ data }">
-                <Button text icon="pi pi-pencil" @click="editNameDialog(data.name, data.id)"></Button>
-                <Button text icon="pi pi-trash" @click="confirmDelete(data.id)" severity="danger"></Button>
+                <Button text v-tooltip.bottom="'Ver preguntas'" icon="pi pi-question" @click="$router.push(`/setting/${data.id}/questions`)"></Button>
+                <Button text v-tooltip.bottom="'Editar formulario'" icon="pi pi-pencil" @click="editNameDialog(data.name, data.id)" severity="success"></Button>
+                <Button text v-tooltip.bottom="'Eliminar formulario'" icon="pi pi-trash" @click="confirmDelete(data.id)" severity="danger"></Button>
             </template>
         </Column>
     </DataTable>

@@ -24,11 +24,13 @@ import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import ConfirmDialog from 'primevue/confirmdialog';
 import ConfirmationService from 'primevue/confirmationservice';
+import Tooltip from 'primevue/tooltip';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
-    nuxtApp.vueApp.use(ToastService)
-    nuxtApp.vueApp.use(ConfirmationService)
+    nuxtApp.vueApp.use(ToastService);
+    nuxtApp.vueApp.use(ConfirmationService);
+    nuxtApp.vueApp.directive('tooltip', Tooltip);
     nuxtApp.vueApp.component("Button", Button);
     nuxtApp.vueApp.component("Card", Card);
     nuxtApp.vueApp.component("InputText", InputText);
