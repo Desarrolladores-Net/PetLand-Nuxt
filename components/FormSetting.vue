@@ -2,7 +2,7 @@
     <div class="d-flex just-content-right mt-10">
         <Button label="Crear formulario" @click="createDialog = true"></Button>
     </div>
-    <DataTable :value="forms.data"  class="p-datatable-sm">
+    <DataTable v-if="forms" :value="forms.data"  class="p-datatable-sm">
         <Column field="name" header="Nombre"></Column>
         <Column field="active" header="Activo">
             <template #body="{ data, index }">
@@ -16,6 +16,9 @@
             </template>
         </Column>
     </DataTable>
+    <div v-else>
+        <h1 class="text-main-color text-center">No hay formularios</h1>
+    </div>
     <Toast position="bottom-right"></Toast>
     <Dialog v-model:visible="editDialog" modal header="Editar nombre del formulario" :style="{ width: '70vh' }">
         <div class="p-20">
@@ -45,6 +48,7 @@
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
         </div>
     </Dialog>
+    
     <ConfirmDialog></ConfirmDialog>
 </template>
 
