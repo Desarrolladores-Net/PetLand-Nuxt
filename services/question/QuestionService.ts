@@ -7,7 +7,7 @@ export function CreateQuestionRequest(dto: CreateInterfaceRM) : Promise<Question
     return Axios.post(QuestionBaseUrl, dto).then(response => response.data)
 }
 
-export function GreateQuestionRequest() : Promise<Array<QuestionItem>>
+export function GetQuestionRequest(formId: String) : Promise<Array<QuestionItem>>
 {
-    return Axios.get(QuestionBaseUrl).then(response => response.data)
+    return Axios.get(QuestionBaseUrl+'/'+formId).then(response => response.data)
 }

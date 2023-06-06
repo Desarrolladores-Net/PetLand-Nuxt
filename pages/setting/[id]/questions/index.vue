@@ -13,7 +13,28 @@
                 </div>
             </template>
             <template #content>
-
+                <DataTable v-if="questions" :value="questions" class="p-datatable-sm">
+                    <Column field="message" header="Pregunta"></Column>
+                    <Column field="typeQuestion" header="Tipo de pregunta">
+                        <template #body="{ data, index }">
+                            <p v-if="data.typeQuestion == 0">Respuesta simple</p>
+                            <p v-else-if="data.typeQuestion == 1">Respuesta larga</p>
+                            <p v-else>Sí o no</p>
+                        </template>
+                    </Column>
+                    <Column header="Acciones">
+                        <template #body="{ data }">
+                            <Button text v-tooltip.bottom="'Editar formulario'" icon="pi pi-pencil"
+                               severity="success"></Button>
+                            <Button text v-tooltip.bottom="'Eliminar formulario'" icon="pi pi-trash"
+                                severity="danger"></Button>
+                        </template>
+                    </Column>
+                </DataTable>
+                <div v-else>
+                    <h1 class="text-main-color text-center">No hay preguntas en este formulario</h1>
+                </div>
+                <Toast position="bottom-right"></Toast>
             </template>
             <template #footer>
 
@@ -28,8 +49,8 @@
             </span>
             <div class="p-float-label mt-10" style="width: 100%;">
                 <Dropdown v-model="createQuestionModel.typeQuestion" input-class="full-width" inputId="dd-city"
-                    :options="[{name:'Respuesta simple', value: 0}, {name:'Respuesta larga', value: 1}, {name:'Sí o no', value: 2}]" optionLabel="name" placeholder="Seleccione el tipo de pregunta"
-                    class="w-full" />
+                    :options="[{ name: 'Respuesta simple', value: 0 }, { name: 'Respuesta larga', value: 1 }, { name: 'Sí o no', value: 2 }]"
+                    optionLabel="name" placeholder="Seleccione el tipo de pregunta" class="w-full" />
                 <label for="dd-city">Tipo de pregunta</label>
             </div>
         </div>
@@ -46,16 +67,19 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { CreateFormRequest } from '../../../../services/setting/SettingServices';
-import { CreateQuestionRequest } from '../../../../services/question/QuestionService';
+import { CreateQuestionRequest, GetQuestionRequest } from '../../../../services/question/QuestionService';
+import { useToast } from "primevue/usetoast";
 
+const toast = useToast()
 const createDialog = ref(false)
-const createQuestionModel = ref({ message: '', typeQuestion: {name: '', value: ''} })
-const loading = ref({create: false})
+const createQuestionModel = ref({ message: '', typeQuestion: { name: '', value: '' } })
+const loading = ref({ create: false })
 const route = useRoute()
+const { data: questions } = await useAsyncData('questions', () => GetQuestionRequest(route.params.id))
 
 const createQuestionRequest = async () => {
     loading.value.create = true
-    
+
     const dto = {
         formId: route.params.id,
         message: createQuestionModel.value.message,
@@ -63,11 +87,12 @@ const createQuestionRequest = async () => {
     }
 
     const response = await CreateQuestionRequest(dto)
-    loading.value = false
+    loading.value.create = false
 
-    createQuestionModel.value = { message: '', typeQuestion: {name: '', value: ''} }
+    createQuestionModel.value = { message: '', typeQuestion: { name: '', value: '' } }
     createDialog.value = false
-
+    questions.value = await GetQuestionRequest(route.params.id)
+    toast.add({ severity: 'info', summary: 'Pregunta creada', detail: 'Ha guardado una pregunta en el sistema.', life: 4000 });
 }
 
 const closeCreateDialog = () => {
