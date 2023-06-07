@@ -27,20 +27,22 @@
                             <Button text v-tooltip.bottom="'Editar pregunta'" icon="pi pi-pencil"
                                severity="success"></Button>
                             <Button text v-tooltip.bottom="'Eliminar pregunta'" icon="pi pi-trash"
-                                severity="danger"></Button>
+                                severity="danger" @click="confirmDelete(data.id)"></Button>
                         </template>
                     </Column>
                 </DataTable>
                 <div v-else>
                     <h1 class="text-main-color text-center">No hay preguntas en este formulario</h1>
                 </div>
-                <Toast position="bottom-right"></Toast>
+               
             </template>
             <template #footer>
 
             </template>
         </Card>
     </div>
+    <ConfirmDialog></ConfirmDialog>
+    <Toast position="bottom-right"></Toast>
     <Dialog v-model:visible="createDialog" modal header="Crear pregunta" :style="{ width: '90vh' }">
         <div class="p-20">
             <span class="p-float-label">
@@ -66,10 +68,11 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { CreateFormRequest } from '../../../../services/setting/SettingServices';
-import { CreateQuestionRequest, GetQuestionRequest } from '../../../../services/question/QuestionService';
+import { CreateQuestionRequest, GetQuestionRequest, DeleteQuestionRequest } from '../../../../services/question/QuestionService';
 import { useToast } from "primevue/usetoast";
+import { useConfirm } from "primevue/useconfirm";
 
+const confirm = useConfirm()
 const toast = useToast()
 const createDialog = ref(false)
 const createQuestionModel = ref({ message: '', typeQuestion: { name: '', value: '' } })
@@ -100,6 +103,25 @@ const closeCreateDialog = () => {
     createQuestionModel.value.typeQuestion = ''
     createQuestionModel.value.message = ' '
 }
+
+const confirmDelete = (id) => {
+    confirm.require({
+        message: '¿Desea borrar esta pregunta?',
+        header: 'Confirmación',
+        icon: 'pi pi-info-circle',
+        acceptLabel: 'Sí',
+        rejectLabel: 'No',
+        acceptClass: 'p-button-danger',
+        accept: async () => {
+
+            const response = await DeleteQuestionRequest(id)
+            
+            questions.value = await GetQuestionRequest(route.params.id)
+
+            toast.add({ severity: 'info', summary: 'Formulario eliminado', detail: 'Esta pregunta se ha eliminado del sistema.', life: 3000 });
+        }
+    });
+};
 
 useHead({
     title: 'Preguntas'

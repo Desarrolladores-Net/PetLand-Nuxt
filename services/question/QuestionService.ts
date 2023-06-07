@@ -11,3 +11,8 @@ export function GetQuestionRequest(formId: String) : Promise<Array<QuestionItem>
 {
     return Axios.get(QuestionBaseUrl+'/'+formId).then(response => response.data)
 }
+
+export function DeleteQuestionRequest(id: String) : Promise<QuestionItem>
+{
+    return Axios.delete(QuestionBaseUrl+'/'+id).then(response => response.data)
+}
