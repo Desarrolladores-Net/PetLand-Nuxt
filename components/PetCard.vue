@@ -10,7 +10,7 @@
         </template>
         <template #footer>
             <div class="d-flex just-content-right">
-                <Button label="Detalles" />
+                <Button label="Detalles" @click="$router.push(`/pet/${props.pet.id}`)" />
             </div>
 
         </template>
