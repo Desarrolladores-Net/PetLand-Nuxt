@@ -25,6 +25,7 @@ import Dialog from 'primevue/dialog';
 import ConfirmDialog from 'primevue/confirmdialog';
 import ConfirmationService from 'primevue/confirmationservice';
 import Tooltip from 'primevue/tooltip';
+import RadioButton from 'primevue/radiobutton';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -53,6 +54,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component('Column', Column)
     nuxtApp.vueApp.component('Dialog', Dialog)
     nuxtApp.vueApp.component('ConfirmDialog', ConfirmDialog)
+    nuxtApp.vueApp.component('RadioButton', RadioButton)
    
     //other components that you need
 });

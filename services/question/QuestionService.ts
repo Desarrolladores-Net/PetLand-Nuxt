@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { CreateInterfaceRM, QuestionItem } from "@/interfaces/question/interface";
-import { QuestionBaseUrl } from "~~/helpers/url";
+import { QuestionBaseUrl, FormActiveUrl } from "~~/helpers/url";
 
 export function CreateQuestionRequest(dto: CreateInterfaceRM): Promise<QuestionItem> {
     return Axios.post(QuestionBaseUrl, dto).then(response => response.data)
@@ -30,4 +30,9 @@ export function GetStringTypeQuestion(type: number): String {
     else {
         return 'Sí o no'
     }
+}
+
+export function GetFormActive(): Promise<Array<QuestionItem>>
+{
+    return Axios.get(FormActiveUrl).then(response => response.data.question)
 }
