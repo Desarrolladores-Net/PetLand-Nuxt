@@ -16,3 +16,6 @@ export const FormActiveUrl = `${APIDomain}form/active`
 
 //Quetion
 export const QuestionBaseUrl = `${APIDomain}question`
+
+//Adoption
+export const AdoptionBaseUrl = `${APIDomain}adoption`
