@@ -52,6 +52,7 @@
 
         </Card>
     </div>
+    <Toast position="bottom-right"></Toast>
 </template>
 
 <script setup>
@@ -94,9 +95,13 @@ const sendApplication = async () => {
 
     const response = await CreateApplicationRequest(dto)
 
-    if (response) {
+    if (Object.hasOwn(response, 'userId')) {
         toast.add({ severity: 'info', summary: 'Solicitud enviada', detail: 'El administrador se pondrá en contacto con usted.', life: 4000 });
         router.push('/pet')
+    }
+    else
+    {
+        toast.add({ severity: 'error', summary: 'Solicitud enviada', detail: response.detail, life: 4000 });
     }
 
 }

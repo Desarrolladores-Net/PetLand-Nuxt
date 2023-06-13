@@ -1,9 +1,15 @@
 <template>
-<h1>Perfil del animal</h1>
-<Button @click="$router.push(`/pet/${$route.params.id}/application`)">Adoptar</Button>
+    <div class="p-20">
+        
+    </div>
 </template>
 
 <script setup>
+
+
+//const {data, pending} = await useAsyncData(() => )
+
+
 useHead({
     title: 'Reporte'
 })
