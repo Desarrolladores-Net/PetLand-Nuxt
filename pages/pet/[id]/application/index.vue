@@ -36,7 +36,7 @@
             </template>
             <template #footer>
                 <div class="d-flex just-content-right">
-                    <NuxtLink class="none-decoration" to="/pet">
+                    <NuxtLink class="none-decoration" :to="`/pet/${route.params.id}`">
                         <Button class="mr-10" text>
                             Cancelar
                         </Button>
