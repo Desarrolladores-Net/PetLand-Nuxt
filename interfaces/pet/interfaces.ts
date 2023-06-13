@@ -1,10 +1,21 @@
 export interface Pet {
-    fullName: String,
-    age: Number,
-    address: String,
-    description: String,
-    wasAdopted: Boolean,
-    date: Date
+    id:           string;
+    fullname:     string;
+    age:          number;
+    address:      Address;
+    description:  string;
+    wasAdopted:   boolean;
+    adoptionDate: null;
+    photoPath:    string;
+}
+
+export interface Address {
+    id:          string;
+    petId:       string;
+    province:    string;
+    municipe:    string;
+    streetName:  string;
+    moreDetails: string;
 }
 
 export interface CreatePet {

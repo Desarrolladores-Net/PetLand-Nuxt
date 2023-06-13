@@ -26,6 +26,7 @@ import ConfirmDialog from 'primevue/confirmdialog';
 import ConfirmationService from 'primevue/confirmationservice';
 import Tooltip from 'primevue/tooltip';
 import RadioButton from 'primevue/radiobutton';
+import Image from 'primevue/image';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -55,6 +56,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component('Dialog', Dialog)
     nuxtApp.vueApp.component('ConfirmDialog', ConfirmDialog)
     nuxtApp.vueApp.component('RadioButton', RadioButton)
-   
+    nuxtApp.vueApp.component('Image', Image)
     //other components that you need
 });

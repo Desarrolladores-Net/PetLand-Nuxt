@@ -3,14 +3,14 @@
         <Card class="animate__animated animate__fadeIn">
             <template #content>
                 <div class="grid">
-                    <div class="col-12 lg:col-6 md:col-6">
+                    <div class="col-12 lg:col-7">
                         <div class="p-float-label" style="width: 100%;">
                             <Dropdown v-model="filter.province" inputId="dd-city" :options="getProvinces()"
                                 optionLabel="name" placeholder="Seleccione una provincia" class="w-full mr-10" />
                             <label for="dd-city">Provincia</label>
                         </div>
                     </div>
-                    <div class="col-12 lg:col-6 md:col-6">
+                    <div class="col-12 lg:col-5">
                         <div class="p-float-label" style="width: 100%;">
                             <Dropdown v-model="filter.municipality" input-class="full-width" inputId="dd-city"
                                 :options="getMunicipality(filter.province.name)" optionLabel="name"
