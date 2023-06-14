@@ -40,7 +40,7 @@
             <template #footer>
                 <div class="d-flex just-content-right">
                     <NuxtLink class="none-decoration" to="/">
-                        <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
+                        <Button label="Cerrar" severity="secondary" text class="mr-10" />
                     </NuxtLink>
                     <Button v-if="!loading" label="Registrar" @click="submit()">
                         Registrar

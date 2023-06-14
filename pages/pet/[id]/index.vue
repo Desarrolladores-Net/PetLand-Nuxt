@@ -45,13 +45,7 @@ import { useRoute } from "vue-router";
 import { APIFiles } from "@/helpers/url";
 
 const route = useRoute()
-const { data, pending } = await useAsyncData('getPetProfile', async () => {
-
-    const response = await GetPetProfile(store.state.user.id, route.params.id)
-
-    return response
-
-})
+const { data, pending } = await useAsyncData('getPetProfile', () =>  GetPetProfile(store.state.user.id, route.params.id))
 
 
 useHead({

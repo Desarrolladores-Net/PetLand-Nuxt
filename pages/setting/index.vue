@@ -14,6 +14,14 @@
                         <FormSetting @changeActive="activeForm"></FormSetting>
 
                     </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <i class="pi pi-file mr-2"></i>
+                            <span>Solicitudes</span>
+                        </template>
+                        <ApplicationSetting></ApplicationSetting>
+
+                    </TabPanel>
                 </TabView>
             </template>
             <template #footer>

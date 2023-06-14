@@ -8,3 +8,12 @@ export interface UserResponse{
     question: String,
     response: String
 }
+
+export interface Application {
+    id:               string;
+    userId:           string;
+    petId:            string;
+    date:             Date;
+    applicationState: number;
+    userResponse:     null;
+}
