@@ -31,6 +31,7 @@ import { GetPetProfile } from "~~/services/pet/petRequest";
 const props = defineProps({
     petId: String
 })
+
 const { data, pending } = await useAsyncData('getPetProfile', () =>  {
     try
     {

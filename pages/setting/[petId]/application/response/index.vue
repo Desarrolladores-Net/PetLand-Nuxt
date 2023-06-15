@@ -1,3 +1,0 @@
-<template>
-    Respuesta
-</template>

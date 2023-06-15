@@ -1,7 +1,8 @@
 export interface CreateInterfaceRM{
     formId: String,
     message: String,
-    typeQuestion: Number
+    typeQuestion: Number,
+    priority: Number
 }
 
 export interface QuestionItem{
@@ -9,4 +10,5 @@ export interface QuestionItem{
     id: String,
     message: String,
     typeQuestion: Number
+    priority: Number
 }

@@ -15,5 +15,5 @@ export interface Application {
     petId:            string;
     date:             Date;
     applicationState: number;
-    userResponse:     null;
+    userResponse:     UserResponse;
 }

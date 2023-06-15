@@ -90,7 +90,7 @@ const sendApplication = async () => {
     }
 
     questions.value.forEach(item => {
-        dto.userResponse.push({ question: item.message, response: item.response })
+        dto.userResponse.push({ question: item.message, response: item.response, priority: item.priority })
     })
 
     const response = await CreateApplicationRequest(dto)

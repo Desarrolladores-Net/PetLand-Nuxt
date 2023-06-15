@@ -4,14 +4,22 @@ import { ErrorRequest } from "~~/interfaces/error";
 import { CreateApplicationRM, Application } from '../../interfaces/application/interface';
 
 
-export function CreateApplicationRequest(model: CreateApplicationRM): Promise<CreateApplicationRM> | Promise<ErrorRequest>
- {
+export function CreateApplicationRequest(model: CreateApplicationRM): Promise<CreateApplicationRM> | Promise<ErrorRequest> {
 
     return Axios.post(AdoptionBaseUrl, model).then(response => response.data).catch(error => error.response.data)
 }
 
-export function GetApplicationRequest(skip: Number, applicationState: Number): Promise<Array<Application>>
-{
-    console.log('SKIP: '+skip)
+export function GetApplicationRequest(skip: Number, applicationState: Number): Promise<Array<Application>> {
     return Axios.get(`${AdoptionBaseUrl}/${skip}/${applicationState}`).then(response => response.data)
+}
+
+export function GetUserResponses(applicationId: String): Promise<Application> {
+
+    try {
+        console.log("Este es el id: "+applicationId)
+        return Axios.get(`${AdoptionBaseUrl}/${applicationId}`).then(response => response.data);
+    }
+    catch (error) {
+        console.log(error)
+    }
 }

@@ -24,17 +24,17 @@
                     </Column>
                     <Column header="Acciones">
                         <template #body="{ data }">
-                            <Button text v-tooltip.bottom="'Editar pregunta'" icon="pi pi-pencil"
-                               severity="success" @click="editQuestion({...data})"></Button>
-                            <Button text v-tooltip.bottom="'Eliminar pregunta'" icon="pi pi-trash"
-                                severity="danger" @click="confirmDelete(data.id)"></Button>
+                            <Button text v-tooltip.bottom="'Editar pregunta'" icon="pi pi-pencil" severity="success"
+                                @click="editQuestion({ ...data })"></Button>
+                            <Button text v-tooltip.bottom="'Eliminar pregunta'" icon="pi pi-trash" severity="danger"
+                                @click="confirmDelete(data.id)"></Button>
                         </template>
                     </Column>
                 </DataTable>
                 <div v-else>
                     <h1 class="text-main-color text-center">No hay preguntas en este formulario</h1>
                 </div>
-               
+
             </template>
             <template #footer>
 
@@ -105,11 +105,14 @@ const { data: questions } = await useAsyncData('questions', () => GetQuestionReq
 const createQuestionRequest = async () => {
     loading.value.create = true
 
-    const dto = {
+    let dto = {
         formId: route.params.id,
         message: createQuestionModel.value.message,
-        typeQuestion: createQuestionModel.value.typeQuestion.value
+        typeQuestion: createQuestionModel.value.typeQuestion.value,
+        priority: getPriority()
     }
+
+    
 
     const response = await CreateQuestionRequest(dto)
     loading.value.create = false
@@ -148,7 +151,7 @@ const closeCreateDialog = () => {
 }
 
 const editQuestion = (data) => {
-    
+
     const typeQuestion = {
         name: '',
         value: data.typeQuestion
@@ -175,12 +178,25 @@ const confirmDelete = (id) => {
         rejectLabel: 'No',
         acceptClass: 'p-button-danger',
         accept: async () => {
-            const response = await DeleteQuestionRequest(id)  
+            const response = await DeleteQuestionRequest(id)
             questions.value = await GetQuestionRequest(route.params.id)
             toast.add({ severity: 'info', summary: 'Pregunta eliminada', detail: 'Esta pregunta se ha eliminado del sistema.', life: 3000 });
         }
     });
 };
+
+const getPriority = () => {
+    let priority = 0;
+    if (questions.value.length == 0) {
+        priority = 0
+    }
+    else {
+        priority = questions.value[questions.value.length - 1].priority + 1
+        
+    }
+
+    return priority
+}
 
 useHead({
     title: 'Preguntas'

@@ -2,7 +2,7 @@
     <div class="p-20">
         <Card class="animate__animated animate__fadeIn">
             <template #title>
-                <h4 class="text-main-color text-center">Ajustes</h4>
+                <h4 class="text-main-color text-center">Administración</h4>
             </template>
             <template #content>
                 <TabView class="tabview-custom">
