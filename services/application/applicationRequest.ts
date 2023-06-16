@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { AdoptionBaseUrl } from "~~/helpers/url";
 import { ErrorRequest } from "~~/interfaces/error";
-import { CreateApplicationRM, Application } from '../../interfaces/application/interface';
+import { CreateApplicationRM, Application, UpdateApplication } from '../../interfaces/application/interface';
 
 
 export function CreateApplicationRequest(model: CreateApplicationRM): Promise<CreateApplicationRM> | Promise<ErrorRequest> {
@@ -15,11 +15,12 @@ export function GetApplicationRequest(skip: Number, applicationState: Number): P
 
 export function GetUserResponses(applicationId: String): Promise<Application> {
 
-    try {
-        console.log("Este es el id: "+applicationId)
-        return Axios.get(`${AdoptionBaseUrl}/${applicationId}`).then(response => response.data);
-    }
-    catch (error) {
-        console.log(error)
-    }
+    return Axios.get(`${AdoptionBaseUrl}/${applicationId}`).then(response => response.data);
+
+}
+
+export function UpdateApplicationRequest(dto: UpdateApplication): Promise<Application> {
+
+    return Axios.put(AdoptionBaseUrl, dto).then(response => response.data)
+
 }

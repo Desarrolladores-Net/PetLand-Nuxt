@@ -17,3 +17,9 @@ export interface Application {
     applicationState: number;
     userResponse:     UserResponse;
 }
+
+export interface UpdateApplication {
+    applicationId: string;
+    state:         number;
+}
+

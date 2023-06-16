@@ -12,3 +12,4 @@ export interface QuestionItem{
     typeQuestion: Number
     priority: Number
 }
+
