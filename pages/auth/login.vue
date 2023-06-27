@@ -24,19 +24,6 @@
                             <Button label="Cerrar" severity="secondary" style="margin-left: 0.5em" />
                         </NuxtLink>
                     </div>
-                    <div class="d-flex">
-                        <Divider></Divider>
-                        <p class="text-main-color">También</p>
-                        <Divider></Divider>
-                    </div>
-                    <div>
-                        <Button icon="pi pi-google" style="width: 100%;" text severity="danger">Iniciar sesión con
-                            Google</Button>
-                        <Button icon="pi pi-facebook" style="width: 100%;" text severity="primary">Iniciar sesión con
-                            Facebook</Button>
-                        <Button icon="pi pi-check" style="width: 100%;" text severity="info">Iniciar sesión con
-                            Twitter</Button>
-                    </div>
                 </template>
 
             </Card>
