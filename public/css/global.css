@@ -130,3 +130,7 @@ main{
 .scroll{
     overflow-y: auto;
 }
+
+.pl-0{
+    padding-left: 0;
+}

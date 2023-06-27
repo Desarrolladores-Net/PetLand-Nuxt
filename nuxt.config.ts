@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+    target: 'static',
+    ssr: false,
     css: [
         "primevue/resources/themes/md-light-indigo/theme.css",
         "primevue/resources/primevue.css",

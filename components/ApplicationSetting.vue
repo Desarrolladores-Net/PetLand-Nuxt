@@ -17,7 +17,7 @@
             </Column>
             <Column field="applicationState" header="Estado">
                 <template #body="{ data }">
-                    <Button text severity="secondary" @click="openChangeStateDialog(data.id, data.applicationState)">
+                    <Button text severity="secondary" @click="openChangeStateDialog(data.id, data.applicationState)" class="pl-0">
                         {{ getState(data.applicationState
                         ) }}
                     </Button>
