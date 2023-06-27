@@ -1,5 +1,5 @@
-const APIDomain = (process.env.NODE_ENV === "development") ? 'https://localhost:7170/api/' : 'https://petland-back.onrender.com';
-export const APIFiles = (process.env.NODE_ENV === "development") ? 'https://localhost:7170' : 'https://petland-back.onrender.com'
+const APIDomain = (process.env.NODE_ENV === "development") ? 'https://localhost:7170/api/' : 'https://petland-back.onrender.com/';
+export const APIFiles = (process.env.NODE_ENV === "development") ? 'https://localhost:7170' : 'https://petland-back.onrender.com/'
 
 
 //User
