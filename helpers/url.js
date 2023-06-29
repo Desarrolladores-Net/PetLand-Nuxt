@@ -1,9 +1,10 @@
-const APIDomain = (process.env.NODE_ENV === "development") ? 'https://localhost:7170/api/' : 'https://petland-back.onrender.com/api/';
-export const APIFiles = (process.env.NODE_ENV === "development") ? 'https://localhost:7170' : 'https://petland-back.onrender.com'
+const APIDomain = (process.env.NODE_ENV === "development") ? 'http://localhost:5000/api/' : 'http://briansoftfactory-001-site1.atempurl.com/api/';
+export const APIFiles = (process.env.NODE_ENV === "development") ? 'http://localhost:5000' : 'http://briansoftfactory-001-site1.atempurl.com/';
 
 
 //User
 export const  RegisterUrl = `${APIDomain}user`
+export const  LoginUrl = `${APIDomain}user/login`
 
 //Pet
 export const GetAllPets = `${APIDomain}pet/all`
