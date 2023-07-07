@@ -59,6 +59,12 @@ import { ref, onBeforeMount } from "vue";
 import store from "@/store/index";
 
 useHead({
+    meta: [
+        {
+          httpEquiv: 'Content-Security-Policy',
+          content: 'upgrade-insecure-requests'
+        }
+    ],
     titleTemplate: '%s | PetLand',
     link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
