@@ -1,5 +1,5 @@
 <template>
-    <Carousel style="margin-top: 20px;" :value="urls" :numVisible="1" :numScroll="1" :autoplay-interval="5000">
+    <Carousel class="animate__animated animate__fadeIn" style="margin-top: 20px;" :value="urls" :numVisible="1" :numScroll="1" :autoplay-interval="5000">
         <template #item="slotProps">
             
             <div class="d-flex just-content-center" style="height: ;">
@@ -8,7 +8,7 @@
             </div>
         </template>
     </Carousel>
-    <div class="p-20">
+    <div class="p-20 animate__animated animate__fadeIn">
         <h1 class="text-main-color text-center">¿Qué es Petland?</h1>
         <p class="text-main-color text-center">Petland es un servicio web que te ayuda a encontrar tu mascota ideal y a
             adoptarla de forma responsable. En Petland, puedes buscar entre miles de animales de diferentes razas, edades y
