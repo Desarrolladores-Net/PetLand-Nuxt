@@ -48,14 +48,17 @@
             </template>
 
             <template #footer>
-                <div class="d-flex just-content-right">       
+                <div class="d-flex just-content-right">
                     <NuxtLink class="none-decoration" to="/pet">
                         <Button class="mr-10" text>
                             Cancelar
                         </Button>
                     </NuxtLink>
-                    <Button @click="savePet()" >
+                    <Button v-if="!loading" @click="savePet()">
                         Guardar
+                    </Button>
+                    <Button v-else @click="savePet()">
+                        Guardando
                     </Button>
                 </div>
 
@@ -80,6 +83,7 @@ useHead({
 
 const router = useRouter()
 const Model = ref({ province: '', municipality: '', file: '', name: '', age: '', description: '', province: '', municipality: '', streetName: '', moreDetails: '' })
+const loading = ref(false)
 
 const loadFile = (e) => {
 
@@ -91,21 +95,24 @@ const clearImage = () => {
 }
 
 const savePet = () => {
+    loading.value = true
+    const form = new FormData()
+    form.append('UserId', store.state.user.id)
+    form.append('Fullname', Model.value.name)
+    form.append('Age', Model.value.age)
+    form.append('Description', Model.value.description)
+    form.append('Province', Model.value.province.name)
+    form.append('Municipe', Model.value.municipality.name)
+    form.append('StreetName', Model.value.streetName)
+    form.append('MoreDetails', Model.value.moreDetails)
+    form.append('Photo', Model.value.file)
 
-   const form = new FormData()
-   form.append('UserId', store.state.user.id)
-   form.append('Fullname', Model.value.name)
-   form.append('Age', Model.value.age)
-   form.append('Description', Model.value.description)
-   form.append('Province', Model.value.province.name)
-   form.append('Municipe', Model.value.municipality.name)
-   form.append('StreetName', Model.value.streetName)
-   form.append('MoreDetails', Model.value.moreDetails)
-   form.append('Photo', Model.value.file)
-    
     SavePetRequest(form).then(response => {
         router.push('/pet')
-    }).catch(error => console.log(error))
+    }).catch(error => {
+        loading.value = false
+        console.log(error)
+    })
 }
 
 
