@@ -134,3 +134,11 @@ main{
 .pl-0{
     padding-left: 0;
 }
+
+.white{
+    color: white;
+}
+
+.background-page {
+    background-color: #09002a;
+}

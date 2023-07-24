@@ -45,8 +45,9 @@
                     <Button v-if="!loading" label="Registrar" @click="submit()">
                         Registrar
                     </Button>
-                    <ProgressSpinner v-else style="height: 40px" strokeWidth="8" fill="var(--surface-ground)"
-                        animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+                    <Button v-else label="Registrar" @click="submit()">
+                        Registrando
+                    </Button>    
                 </div>
             </template>
         </Card>

@@ -1,5 +1,5 @@
-const APIDomain = (process.env.NODE_ENV === "development") ? 'http://localhost:5000/api/' : 'http://briansoftfactory-001-site1.atempurl.com/api/';
-export const APIFiles = (process.env.NODE_ENV === "development") ? 'http://localhost:5000' : 'http://briansoftfactory-001-site1.atempurl.com/';
+const APIDomain = (process.env.NODE_ENV === "development") ? 'https://localhost:7170/api/' : 'http://briansoftfactory-001-site1.atempurl.com/api/';
+export const APIFiles = (process.env.NODE_ENV === "development") ? 'https://localhost:7170' : 'http://briansoftfactory-001-site1.atempurl.com/';
 
 
 //User

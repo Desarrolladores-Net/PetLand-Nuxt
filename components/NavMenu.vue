@@ -7,7 +7,9 @@
             <NuxtLink class="none-decoration" to="/pet">
                 <Button class="mt-10" style="width: 100%;" label="Mascotas" text />
             </NuxtLink>
-
+            <NuxtLink class="none-decoration" to="/about">
+                <Button class="mt-10" style="width: 100%;" label="Sobre nosotros" text />
+            </NuxtLink>
             <NuxtLink v-if="store.state.user" class="none-decoration" to="/setting">
                 <Button v-if="store.state.user.role == 'Admin'" class="mt-10" style="width: 100%;" label="Administración" text />
             </NuxtLink>
