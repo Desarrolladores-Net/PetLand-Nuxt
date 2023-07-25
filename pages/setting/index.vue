@@ -22,6 +22,14 @@
                         <ApplicationSetting></ApplicationSetting>
 
                     </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <i class="pi pi-file mr-2"></i>
+                            <span>Usuarios</span>
+                        </template>
+                        <UserAdmin></UserAdmin>
+
+                    </TabPanel>
                 </TabView>
             </template>
             <template #footer>

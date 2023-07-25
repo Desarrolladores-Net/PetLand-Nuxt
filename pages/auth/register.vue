@@ -75,7 +75,7 @@ useHead({
 
 const show = () => {
     
-    toast.add({ severity: 'info', summary: 'Información', detail: 'Ya hay un usuario con ese email.', life: 4000 });
+    toast.add({ severity: 'info', summary: 'Información', detail: 'Ya hay un usuario con ese email o teléfono.', life: 4000 });
 };
 
 
