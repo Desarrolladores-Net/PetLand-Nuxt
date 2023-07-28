@@ -24,7 +24,7 @@
                     </TabPanel>
                     <TabPanel>
                         <template #header>
-                            <i class="pi pi-file mr-2"></i>
+                            <i class="pi pi-user mr-2"></i>
                             <span>Usuarios</span>
                         </template>
                         <UserAdmin></UserAdmin>

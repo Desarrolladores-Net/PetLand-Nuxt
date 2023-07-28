@@ -5,6 +5,7 @@ export const APIFiles = (process.env.NODE_ENV === "development") ? 'https://loca
 //User
 export const  RegisterUrl = `${APIDomain}user`
 export const  LoginUrl = `${APIDomain}user/login`
+export const  GetAllUserUrl = `${APIDomain}user/all`
 
 //Pet
 export const GetAllPets = `${APIDomain}pet/all`
